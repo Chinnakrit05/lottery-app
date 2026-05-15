@@ -1,6 +1,6 @@
 {
   "name": "lottery-app",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ระบบจัดการหวย — Desktop edition (Electron + Next.js + SQLite)",
   "author": "chinnakrit.mek@gmail.com",
   "license": "MIT",
