@@ -54,6 +54,9 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ['var(--font-thai)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
         "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
@@ -61,6 +64,11 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        'soft': '0 2px 8px -2px rgba(0,0,0,0.05), 0 4px 16px -4px rgba(0,0,0,0.05)',
+        'soft-lg': '0 10px 30px -10px rgba(0,0,0,0.10), 0 4px 12px -4px rgba(0,0,0,0.06)',
+        'glow': '0 0 0 4px hsl(var(--primary) / 0.15)',
       },
     },
   },

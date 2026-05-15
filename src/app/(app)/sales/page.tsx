@@ -109,7 +109,7 @@ export default function SalesPage() {
   };
 
   return (
-    <div className="space-y-4 max-w-5xl">
+    <div className="space-y-5 max-w-5xl animate-page-enter">
       <Card>
         <CardHeader>
           <CardTitle>📝 บันทึกการขาย</CardTitle>
@@ -128,7 +128,7 @@ export default function SalesPage() {
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="number">เลข ({digits} หลัก)</Label>
+              <Label htmlFor="number" className="text-sm font-semibold">เลข ({digits} หลัก)</Label>
               <Input
                 id="number"
                 ref={numberRef}
@@ -143,12 +143,12 @@ export default function SalesPage() {
                     priceRef.current?.focus();
                   }
                 }}
-                className="text-lg font-mono tracking-wider"
+                className="h-14 text-2xl font-mono tracking-[0.4em] text-center mt-1.5"
                 autoFocus
               />
             </div>
             <div>
-              <Label htmlFor="price">ราคา (บาท)</Label>
+              <Label htmlFor="price" className="text-sm font-semibold">ราคา (บาท)</Label>
               <Input
                 id="price"
                 ref={priceRef}
@@ -162,6 +162,7 @@ export default function SalesPage() {
                     handleSave();
                   }
                 }}
+                className="h-14 text-2xl font-semibold text-center mt-1.5"
               />
             </div>
           </div>
@@ -179,8 +180,8 @@ export default function SalesPage() {
               rows={2}
             />
           </div>
-          <div className="flex justify-end">
-            <Button onClick={handleSave} disabled={saving} size="lg">
+          <div className="flex justify-end pt-2">
+            <Button onClick={handleSave} disabled={saving} size="xl" className="min-w-[200px]">
               {saving ? 'กำลังบันทึก…' : '💾 บันทึก (Enter)'}
             </Button>
           </div>
@@ -193,11 +194,18 @@ export default function SalesPage() {
         </CardHeader>
         <CardContent>
           {recent.length === 0 ? (
-            <div className="py-8 text-center text-sm text-muted-foreground">ยังไม่มีรายการ</div>
+            <div className="py-12 text-center text-sm text-muted-foreground">
+              <div className="text-4xl mb-2">📭</div>
+              ยังไม่มีรายการ — กรอกเลขด้านบนเพื่อเริ่มบันทึก
+            </div>
           ) : (
             <ul className="divide-y">
-              {recent.map((r) => (
-                <li key={r.id} className="flex items-center justify-between gap-3 py-2">
+              {recent.map((r, idx) => (
+                <li
+                  key={r.id}
+                  style={{ animationDelay: `${idx * 30}ms` }}
+                  className="flex items-center justify-between gap-3 py-3 px-1 rounded-lg hover:bg-accent/40 transition-colors animate-fade-in"
+                >
                   <div className="flex items-center gap-3 flex-wrap">
                     <TicketBadge betType={r.bet_type} />
                     <TicketNumber number={r.number} isReverse={r.is_reverse} />

@@ -36,8 +36,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         {/* Main content */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <UpdateBanner />
-          <header className="flex h-14 items-center justify-between border-b bg-card px-4 md:px-6">
-            <div className="flex items-center gap-2">
+          <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-card/80 backdrop-blur-md px-4 md:px-6 shadow-soft">
+            <div className="flex items-center gap-3">
               <Button
                 variant="ghost"
                 size="icon"
@@ -46,7 +46,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
-              <span className="text-sm text-muted-foreground hidden md:inline">งวดปัจจุบัน:</span>
+              <span className="text-sm font-medium text-muted-foreground hidden md:inline">📅 งวดปัจจุบัน</span>
             </div>
             <RoundSelector
               rounds={roundState.rounds}
@@ -55,7 +55,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               onRoundsChanged={roundState.refresh}
             />
           </header>
-          <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
+          <main className="flex-1 overflow-auto p-4 md:p-8 bg-gradient-to-br from-background to-muted/30">
+            <div className="animate-page-enter">{children}</div>
+          </main>
         </div>
       </div>
     </CurrentRoundProvider>
