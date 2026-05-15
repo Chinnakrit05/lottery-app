@@ -6,8 +6,8 @@ copyright: Copyright © 2026 chinnakrit.mek@gmail.com
 # Update owner + repo to match your GitHub repository
 publish:
   - provider: github
-    owner: YOUR_GITHUB_USERNAME   # <-- เปลี่ยนเป็น GitHub username ของคุณ
-    repo: lottery-app             # <-- เปลี่ยนเป็นชื่อ repo
+    owner: Chinnakrit05
+    repo: lottery-app
     releaseType: release
 
 directories:
