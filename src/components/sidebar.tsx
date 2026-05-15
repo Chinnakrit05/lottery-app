@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  PencilLine, Search, BarChart3, Trophy, History, Users, Database, Settings, Sparkles, Wifi,
+  PencilLine, Search, BarChart3, Trophy, History, Users, Database, Settings, Sparkles, Wifi, Calculator,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from './theme-toggle';
@@ -71,6 +71,7 @@ function AppVersionLabel() {
 const NAV = [
   { href: '/sales', label: 'บันทึกการขาย', icon: PencilLine },
   { href: '/search', label: 'ค้นหาเลข', icon: Search },
+  { href: '/summary', label: 'สรุปยอด', icon: Calculator },
   { href: '/report', label: 'รายงานยอด', icon: BarChart3 },
   { href: '/result', label: 'ตรวจรางวัล', icon: Trophy },
   { href: '/history', label: 'ประวัติ', icon: History },
