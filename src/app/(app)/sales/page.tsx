@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { BulkEntry } from '@/components/bulk-entry';
 import { Trash2 } from 'lucide-react';
 import { BetTypeButtons } from '@/components/bet-type-buttons';
 import { CustomerCombobox } from '@/components/customer-combobox';
@@ -110,11 +112,22 @@ export default function SalesPage() {
 
   return (
     <div className="space-y-5 max-w-5xl animate-page-enter">
+      <Tabs defaultValue="single" className="space-y-4">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center justify-between flex-wrap gap-3">
+              <span>📝 บันทึกการขาย</span>
+              <TabsList>
+                <TabsTrigger value="single">✍️ ทีละรายการ</TabsTrigger>
+                <TabsTrigger value="bulk">📋 หลายรายการ</TabsTrigger>
+              </TabsList>
+            </CardTitle>
+          </CardHeader>
+        </Card>
+
+      <TabsContent value="single">
       <Card>
-        <CardHeader>
-          <CardTitle>📝 บันทึกการขาย</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           <div>
             <Label>ประเภท</Label>
             <BetTypeButtons value={betType} onChange={setBetType} className="mt-2" />
@@ -187,6 +200,15 @@ export default function SalesPage() {
           </div>
         </CardContent>
       </Card>
+      </TabsContent>
+
+      <TabsContent value="bulk">
+        <BulkEntry
+          roundId={currentRound.id}
+          onSaved={() => loadRecent()}
+        />
+      </TabsContent>
+      </Tabs>
 
       <Card>
         <CardHeader>

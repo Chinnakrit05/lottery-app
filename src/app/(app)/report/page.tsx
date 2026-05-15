@@ -11,6 +11,7 @@ import { summarizeRound, topNumbers } from '@/lib/lottery';
 import { formatBaht, formatNumber } from '@/lib/format';
 import { TicketBadge } from '@/components/ticket-badge';
 import { TicketNumber } from '@/components/ticket-number';
+import { ReportCharts } from '@/components/report-charts';
 
 export default function ReportPage() {
   const { currentRound } = useCurrentRoundCtx();
@@ -36,6 +37,8 @@ export default function ReportPage() {
         <StatCard label={`หัก ${currentRound.deduct_percent}%`} value={formatBaht(summary.deduct_amount)} />
         <StatCard label="ยอดหลังหัก" value={formatBaht(summary.net_amount)} highlight />
       </div>
+
+      <ReportCharts summary={summary} top={top} />
 
       <Card>
         <CardHeader>

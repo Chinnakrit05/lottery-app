@@ -14,7 +14,8 @@ import { BET_LABELS, BET_TYPES } from '@/lib/constants';
 import { formatBaht, formatDateTime } from '@/lib/format';
 import { TicketBadge } from '@/components/ticket-badge';
 import { TicketNumber } from '@/components/ticket-number';
-import { Download, Search, Trash2 } from 'lucide-react';
+import { Download, Search, Trash2, Printer } from 'lucide-react';
+import { PrintReceipt } from '@/components/print-receipt';
 
 export default function HistoryPage() {
   const { currentRound } = useCurrentRoundCtx();
@@ -62,14 +63,31 @@ export default function HistoryPage() {
 
   return (
     <div className="space-y-4">
+      {/* Hidden — only shows when window.print() is invoked */}
+      <PrintReceipt
+        round={currentRound}
+        tickets={filtered}
+        customerName={query.trim() ? query.trim() : null}
+      />
+
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center justify-between">
+          <CardTitle className="flex items-center justify-between gap-2 flex-wrap">
             <span>📜 ประวัติ ({filtered.length} / {tickets.length})</span>
-            <Button onClick={handleExport} disabled={exporting || tickets.length === 0} variant="outline">
-              <Download className="h-4 w-4 mr-2" />
-              {exporting ? 'กำลัง Export…' : 'Export CSV'}
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={() => window.print()}
+                disabled={filtered.length === 0}
+                variant="outline"
+              >
+                <Printer className="h-4 w-4 mr-2" />
+                พิมพ์สลิป
+              </Button>
+              <Button onClick={handleExport} disabled={exporting || tickets.length === 0} variant="outline">
+                <Download className="h-4 w-4 mr-2" />
+                {exporting ? 'กำลัง Export…' : 'Export CSV'}
+              </Button>
+            </div>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">

@@ -249,6 +249,58 @@
   animation: popIn 360ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+/* ===========================
+   Print styles — for receipt
+   =========================== */
+@media print {
+  /* Hide all UI chrome */
+  aside, header, nav, .no-print {
+    display: none !important;
+  }
+  /* Reset background/colors */
+  body, html {
+    background: white !important;
+    color: black !important;
+    font-size: 12px !important;
+    user-select: text !important;
+  }
+  main {
+    padding: 0 !important;
+    background: white !important;
+  }
+  .print-receipt {
+    display: block !important;
+    width: 100% !important;
+    max-width: 80mm;
+    margin: 0 auto;
+    color: black !important;
+    background: white !important;
+    padding: 8mm 6mm !important;
+    font-family: 'Courier New', monospace !important;
+  }
+  .print-receipt table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .print-receipt th,
+  .print-receipt td {
+    text-align: left;
+    padding: 2px 4px;
+    border-bottom: 1px dashed #999;
+    color: black !important;
+  }
+  .print-receipt h1,
+  .print-receipt h2,
+  .print-receipt h3 {
+    margin: 4px 0;
+  }
+  @page {
+    margin: 6mm;
+    size: 80mm auto;
+  }
+}
+.print-receipt { display: none; }
+
 /* Shimmer for skeletons (subtle) */
 @keyframes shimmer {
   0%   { background-position: -200% 0; }
