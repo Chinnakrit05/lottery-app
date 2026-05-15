@@ -12,7 +12,7 @@ export interface UpdateStatus {
   message?: string;
 }
 
-let lastStatus: UpdateStatus = { state: 'idle' };
+let lastStatus: UpdateStatus = { state: 'idle', version: app.getVersion() };
 
 function broadcast(win: BrowserWindow, status: UpdateStatus) {
   lastStatus = status;

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -7,6 +8,23 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from './theme-toggle';
+
+function AppVersionLabel() {
+  const [version, setVersion] = useState<string>('');
+  useEffect(() => {
+    // Pull version from update status (which the main process knows)
+    if (typeof window !== 'undefined' && window.api?.update) {
+      window.api.update.getStatus().then((s) => {
+        if (s.version) setVersion(s.version);
+      });
+    }
+  }, []);
+  return (
+    <span className="text-xs text-muted-foreground">
+      Offline{version ? ` · v${version}` : ''}
+    </span>
+  );
+}
 
 const NAV = [
   { href: '/sales', label: 'บันทึกการขาย', icon: PencilLine },
@@ -53,7 +71,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         })}
       </nav>
       <div className="border-t p-3 flex items-center justify-between">
-        <span className="text-xs text-muted-foreground">Offline · v1.0.0</span>
+        <AppVersionLabel />
         <ThemeToggle />
       </div>
     </aside>
