@@ -96,35 +96,35 @@
     --ring: 26 45% 52%;
   }
 
-  /* 📜 Sepia Paper — gentle paper tone, low saturation */
+  /* 📜 Sepia Paper — classic warm yellow-brown paper (Kindle-like) */
   .sepia {
-    --background: 36 14% 93%;
-    --foreground: 28 14% 30%;
+    --background: 41 32% 90%;
+    --foreground: 28 22% 24%;
 
-    --card: 38 18% 95%;
-    --card-foreground: 28 14% 30%;
+    --card: 42 38% 94%;
+    --card-foreground: 28 22% 24%;
 
-    --popover: 38 18% 95%;
-    --popover-foreground: 28 14% 30%;
+    --popover: 42 38% 94%;
+    --popover-foreground: 28 22% 24%;
 
-    --primary: 22 35% 48%;
-    --primary-foreground: 38 24% 96%;
+    --primary: 22 45% 42%;
+    --primary-foreground: 42 40% 96%;
 
-    --secondary: 34 14% 88%;
-    --secondary-foreground: 28 14% 30%;
+    --secondary: 38 22% 84%;
+    --secondary-foreground: 28 22% 26%;
 
-    --muted: 34 12% 89%;
-    --muted-foreground: 28 10% 45%;
+    --muted: 38 18% 87%;
+    --muted-foreground: 30 15% 44%;
 
-    --accent: 28 18% 87%;
-    --accent-foreground: 28 22% 32%;
+    --accent: 35 28% 84%;
+    --accent-foreground: 28 28% 28%;
 
     --destructive: 0 50% 48%;
-    --destructive-foreground: 38 24% 96%;
+    --destructive-foreground: 42 40% 96%;
 
-    --border: 32 12% 82%;
-    --input: 32 12% 85%;
-    --ring: 22 35% 48%;
+    --border: 35 18% 78%;
+    --input: 35 18% 82%;
+    --ring: 22 45% 42%;
   }
 }
 
