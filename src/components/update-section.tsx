@@ -42,14 +42,26 @@ export function UpdateSection() {
       } else if (!res.version) {
         toast.info('ใช้เวอร์ชั่นล่าสุดอยู่แล้ว ✓');
       } else {
-        toast.success(`พบเวอร์ชั่นใหม่: v${res.version}`, {
-          description: 'กำลังดาวน์โหลดในเบื้องหลัง…',
+        toast.message(`พบเวอร์ชั่นใหม่: v${res.version}`, {
+          description: 'กดปุ่ม "ดาวน์โหลด" ด้านล่างเพื่ออัพเดท',
         });
       }
     } catch (e: any) {
       toast.error('Error: ' + e.message);
     } finally {
       setChecking(false);
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!isElectronWithUpdate()) return;
+    try {
+      const res = await window.api.update.download();
+      if (!res.ok) {
+        toast.error('ดาวน์โหลดไม่สำเร็จ: ' + (res.error || 'unknown'));
+      }
+    } catch (e: any) {
+      toast.error('Error: ' + e.message);
     }
   };
 
@@ -80,7 +92,11 @@ export function UpdateSection() {
           </Button>
         </div>
 
-        <UpdateStatusDisplay status={status} onRestart={handleRestart} />
+        <UpdateStatusDisplay
+          status={status}
+          onDownload={handleDownload}
+          onRestart={handleRestart}
+        />
 
         <div className="text-xs text-muted-foreground border-t pt-3 space-y-1">
           <p>🐱 LotteryApp — ระบบจัดการหวยแบบ offline</p>
@@ -92,7 +108,13 @@ export function UpdateSection() {
   );
 }
 
-function UpdateStatusDisplay({ status, onRestart }: { status: UpdateStatus; onRestart: () => void }) {
+function UpdateStatusDisplay({
+  status, onDownload, onRestart,
+}: {
+  status: UpdateStatus;
+  onDownload: () => void;
+  onRestart: () => void;
+}) {
   if (status.state === 'idle' || status.state === 'none') {
     return (
       <div className="flex items-center gap-2 rounded-md bg-emerald-500/10 px-3 py-2 text-sm text-emerald-700 dark:text-emerald-300">
@@ -113,9 +135,15 @@ function UpdateStatusDisplay({ status, onRestart }: { status: UpdateStatus; onRe
 
   if (status.state === 'available') {
     return (
-      <div className="flex items-center gap-2 rounded-md bg-blue-500/10 px-3 py-2 text-sm text-blue-700 dark:text-blue-300">
-        <Sparkles className="h-4 w-4" />
-        พบเวอร์ชั่นใหม่ v{status.version} — กำลังเริ่มดาวน์โหลด
+      <div className="rounded-md bg-blue-500/10 p-3 space-y-2">
+        <div className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-200">
+          <Sparkles className="h-4 w-4" />
+          พบเวอร์ชั่นใหม่ v{status.version} พร้อมอัพเดท
+        </div>
+        <Button onClick={onDownload} size="sm" className="w-full">
+          <Download className="h-4 w-4 mr-2" />
+          ดาวน์โหลด v{status.version}
+        </Button>
       </div>
     );
   }

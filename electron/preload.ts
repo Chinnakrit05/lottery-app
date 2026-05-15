@@ -41,6 +41,7 @@ const api = {
   update: {
     getStatus: () => ipcRenderer.invoke('update:getStatus'),
     check: () => ipcRenderer.invoke('update:check'),
+    download: () => ipcRenderer.invoke('update:download'),
     restartAndInstall: () => ipcRenderer.invoke('update:restartAndInstall'),
     onStatus: (cb: (s: any) => void) => {
       const handler = (_e: unknown, s: unknown) => cb(s);

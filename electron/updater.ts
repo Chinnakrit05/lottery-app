@@ -39,6 +39,18 @@ export function registerUpdaterIpc() {
       return { ok: false, error: e.message };
     }
   });
+  // User explicitly opts in to downloading
+  ipcMain.handle('update:download', async () => {
+    if (isDev || process.platform !== 'win32') {
+      return { ok: false, error: 'Auto-update only supported in production Windows' };
+    }
+    try {
+      await autoUpdater.downloadUpdate();
+      return { ok: true };
+    } catch (e: any) {
+      return { ok: false, error: e.message };
+    }
+  });
   ipcMain.handle('update:restartAndInstall', () => {
     if (isDev || process.platform !== 'win32') return;
     autoUpdater.quitAndInstall(false, true);
@@ -55,8 +67,9 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
     return;
   }
 
-  autoUpdater.autoDownload = true;
-  autoUpdater.autoInstallOnAppQuit = true;
+  // OPT-IN model: only notify, do not auto-download
+  autoUpdater.autoDownload = false;
+  autoUpdater.autoInstallOnAppQuit = true; // if user downloaded, install on quit
   autoUpdater.logger = console;
 
   autoUpdater.on('checking-for-update', () => {

@@ -42,6 +42,7 @@ export interface ElectronApi {
   update: {
     getStatus: () => Promise<UpdateStatus>;
     check: () => Promise<{ ok: boolean; version?: string | null; error?: string }>;
+    download: () => Promise<{ ok: boolean; error?: string }>;
     restartAndInstall: () => Promise<void>;
     onStatus: (cb: (s: UpdateStatus) => void) => () => void;
   };
