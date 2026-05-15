@@ -1,4 +1,5 @@
 import { BrowserWindow, ipcMain, app } from 'electron';
+import type { UpdateInfo, ProgressInfo } from 'electron-updater';
 import { autoUpdater } from 'electron-updater';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -38,7 +39,7 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
     broadcast(mainWindow, { state: 'checking' });
   });
 
-  autoUpdater.on('update-available', (info) => {
+  autoUpdater.on('update-available', (info: UpdateInfo) => {
     broadcast(mainWindow, { state: 'available', version: info.version });
   });
 
@@ -46,7 +47,7 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
     broadcast(mainWindow, { state: 'none', version: app.getVersion() });
   });
 
-  autoUpdater.on('download-progress', (p) => {
+  autoUpdater.on('download-progress', (p: ProgressInfo) => {
     broadcast(mainWindow, {
       state: 'downloading',
       percent: Math.round(p.percent),
@@ -54,11 +55,11 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
     });
   });
 
-  autoUpdater.on('update-downloaded', (info) => {
+  autoUpdater.on('update-downloaded', (info: UpdateInfo) => {
     broadcast(mainWindow, { state: 'ready', version: info.version });
   });
 
-  autoUpdater.on('error', (err) => {
+  autoUpdater.on('error', (err: Error) => {
     console.error('[updater] error:', err);
     broadcast(mainWindow, { state: 'error', message: err.message });
   });
@@ -81,13 +82,13 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
   setTimeout(() => {
     autoUpdater
       .checkForUpdates()
-      .catch((err) => console.error('[updater] checkForUpdates failed:', err));
+      .catch((err: Error) => console.error('[updater] checkForUpdates failed:', err));
   }, 5000);
 
   // And every 30 minutes after that
   setInterval(() => {
     autoUpdater
       .checkForUpdates()
-      .catch((err) => console.error('[updater] periodic check failed:', err));
+      .catch((err: Error) => console.error('[updater] periodic check failed:', err));
   }, 30 * 60 * 1000);
 }
