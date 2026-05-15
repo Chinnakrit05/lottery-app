@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { NoRound } from '@/components/no-round';
 import { UpdateSection } from '@/components/update-section';
+import { FontScaleSelector } from '@/components/font-scale-selector';
 import { useCurrentRoundCtx } from '@/contexts/current-round';
 import { dbClient } from '@/lib/db-client';
 import { AlertTriangle } from 'lucide-react';
@@ -42,6 +43,7 @@ export default function SettingsPage() {
     return (
       <div className="space-y-4 max-w-3xl">
         <NoRound />
+        <FontScaleSelector />
         <UpdateSection />
       </div>
     );
@@ -118,6 +120,8 @@ export default function SettingsPage() {
           </div>
         </CardContent>
       </Card>
+
+      <FontScaleSelector />
 
       <UpdateSection />
 
