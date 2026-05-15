@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useCurrentRound } from '@/hooks/use-current-round';
 import { CurrentRoundProvider } from '@/contexts/current-round';
 import { UpdateBanner } from './update-banner';
+import { WhatsNewToast } from './whats-new-toast';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,6 +16,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <CurrentRoundProvider value={roundState}>
+      <WhatsNewToast />
       <div className="flex h-screen overflow-hidden">
         {/* Desktop sidebar */}
         <div className="hidden md:block">

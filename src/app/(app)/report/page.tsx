@@ -25,12 +25,14 @@ export default function ReportPage() {
 
   const summary = summarizeRound(tickets, currentRound);
   const top = topNumbers(tickets, 10);
+  const avgTicket = summary.total_count > 0 ? summary.total_amount / summary.total_count : 0;
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         <StatCard label="จำนวนรายการ" value={formatNumber(summary.total_count)} />
         <StatCard label="ยอดขายรวม" value={formatBaht(summary.total_amount)} />
+        <StatCard label="เฉลี่ย/รายการ" value={formatBaht(avgTicket)} />
         <StatCard label={`หัก ${currentRound.deduct_percent}%`} value={formatBaht(summary.deduct_amount)} />
         <StatCard label="ยอดหลังหัก" value={formatBaht(summary.net_amount)} highlight />
       </div>

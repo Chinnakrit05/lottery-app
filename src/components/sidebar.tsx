@@ -48,8 +48,8 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   return (
     <aside className="flex h-full w-64 flex-col border-r bg-card">
-      <div className="flex items-center gap-2 border-b px-6 py-5">
-        <span className="text-2xl">🎰</span>
+      <div className="flex items-center gap-3 border-b px-6 py-5">
+        <span className="text-3xl">🐱</span>
         <div>
           <div className="font-semibold leading-tight">LotteryApp</div>
           <div className="text-xs text-muted-foreground">ระบบจัดการหวย</div>
