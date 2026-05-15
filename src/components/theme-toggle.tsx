@@ -9,8 +9,8 @@ import { cn } from '@/lib/utils';
 const THEMES = [
   { key: 'light',  label: 'Light',         desc: 'สว่างคูล',           icon: Sun,      colors: ['#ffffff', '#3a3aff', '#f1f5f9'] },
   { key: 'dark',   label: 'Dark',          desc: 'มืดคูล',             icon: Moon,     colors: ['#0f1424', '#6b7df5', '#1a2440'] },
-  { key: 'warm',   label: 'Warm Cream',    desc: 'อบอุ่นสบายตา',        icon: Sunrise,  colors: ['#faf2e3', '#e07820', '#f3e8d4'] },
-  { key: 'sepia',  label: 'Sepia Paper',   desc: 'เหมือนกระดาษเก่า',     icon: BookOpen, colors: ['#e8d9bd', '#b95a26', '#d6c3a3'] },
+  { key: 'warm',   label: 'Warm Cream',    desc: 'อบอุ่น นุ่มสบายตา',     icon: Sunrise,  colors: ['#f6f3ee', '#c08755', '#ebe3d8'] },
+  { key: 'sepia',  label: 'Sepia Paper',   desc: 'นุ่มเหมือนกระดาษ',     icon: BookOpen, colors: ['#ece6dd', '#a47657', '#dbd2c5'] },
   { key: 'system', label: 'System',        desc: 'ตามเครื่อง',          icon: Monitor,  colors: ['#cccccc', '#666666', '#999999'] },
 ] as const;
 

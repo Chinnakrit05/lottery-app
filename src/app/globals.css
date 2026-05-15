@@ -65,66 +65,66 @@
     --ring: 240 80% 70%;
   }
 
-  /* 🌅 Warm Cream — soft amber + cream, easy on the eyes */
+  /* 🌅 Warm Cream — soft muted cream, low saturation for eye comfort */
   .warm {
-    --background: 36 40% 96%;
-    --foreground: 24 35% 18%;
+    --background: 36 18% 96%;
+    --foreground: 25 12% 28%;
 
-    --card: 38 50% 98%;
-    --card-foreground: 24 35% 18%;
+    --card: 36 22% 98%;
+    --card-foreground: 25 12% 28%;
 
-    --popover: 38 50% 98%;
-    --popover-foreground: 24 35% 18%;
+    --popover: 36 22% 98%;
+    --popover-foreground: 25 12% 28%;
 
-    --primary: 24 85% 52%;
-    --primary-foreground: 36 40% 98%;
+    --primary: 26 45% 52%;
+    --primary-foreground: 36 30% 98%;
 
-    --secondary: 36 30% 90%;
-    --secondary-foreground: 24 35% 20%;
+    --secondary: 34 15% 92%;
+    --secondary-foreground: 25 12% 30%;
 
-    --muted: 36 25% 92%;
-    --muted-foreground: 28 15% 45%;
+    --muted: 34 12% 93%;
+    --muted-foreground: 28 8% 50%;
 
-    --accent: 32 60% 90%;
-    --accent-foreground: 24 50% 25%;
+    --accent: 30 22% 91%;
+    --accent-foreground: 25 25% 32%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 36 40% 98%;
+    --destructive: 0 55% 50%;
+    --destructive-foreground: 36 30% 98%;
 
-    --border: 32 25% 84%;
-    --input: 32 25% 87%;
-    --ring: 24 85% 52%;
+    --border: 32 12% 87%;
+    --input: 32 12% 90%;
+    --ring: 26 45% 52%;
   }
 
-  /* 📜 Sepia Paper — like an old book, warmest & softest */
+  /* 📜 Sepia Paper — gentle paper tone, low saturation */
   .sepia {
-    --background: 38 45% 89%;
-    --foreground: 28 40% 22%;
+    --background: 36 14% 93%;
+    --foreground: 28 14% 30%;
 
-    --card: 40 55% 93%;
-    --card-foreground: 28 40% 22%;
+    --card: 38 18% 95%;
+    --card-foreground: 28 14% 30%;
 
-    --popover: 40 55% 93%;
-    --popover-foreground: 28 40% 22%;
+    --popover: 38 18% 95%;
+    --popover-foreground: 28 14% 30%;
 
-    --primary: 18 65% 45%;
-    --primary-foreground: 40 50% 95%;
+    --primary: 22 35% 48%;
+    --primary-foreground: 38 24% 96%;
 
-    --secondary: 36 30% 82%;
-    --secondary-foreground: 28 40% 22%;
+    --secondary: 34 14% 88%;
+    --secondary-foreground: 28 14% 30%;
 
-    --muted: 36 28% 84%;
-    --muted-foreground: 28 25% 40%;
+    --muted: 34 12% 89%;
+    --muted-foreground: 28 10% 45%;
 
-    --accent: 28 45% 80%;
-    --accent-foreground: 28 50% 25%;
+    --accent: 28 18% 87%;
+    --accent-foreground: 28 22% 32%;
 
-    --destructive: 0 65% 45%;
-    --destructive-foreground: 40 50% 95%;
+    --destructive: 0 50% 48%;
+    --destructive-foreground: 38 24% 96%;
 
-    --border: 32 25% 76%;
-    --input: 32 25% 80%;
-    --ring: 18 65% 45%;
+    --border: 32 12% 82%;
+    --input: 32 12% 85%;
+    --ring: 22 35% 48%;
   }
 }
 
