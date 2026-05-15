@@ -5,7 +5,7 @@ const SPLASH_HTML = `<!doctype html>
 <html lang="th">
 <head>
 <meta charset="utf-8" />
-<title>LotteryApp</title>
+<title>Love Number</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -81,9 +81,9 @@ const SPLASH_HTML = `<!doctype html>
 <body>
   <div class="card">
     <div class="icon-wrap">
-      <img alt="LotteryApp" src="data:image/png;base64,${SPLASH_ICON_B64}" />
+      <img alt="Love Number" src="data:image/png;base64,${SPLASH_ICON_B64}" />
     </div>
-    <div class="title">LotteryApp</div>
+    <div class="title">Love Number</div>
     <div class="subtitle">ระบบจัดการหวย</div>
     <div class="dots">
       <span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -107,7 +107,7 @@ export function createSplashWindow(): BrowserWindow {
     show: false,
     hasShadow: false,
     backgroundColor: '#00000000',
-    title: 'LotteryApp',
+    title: 'Love Number',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,

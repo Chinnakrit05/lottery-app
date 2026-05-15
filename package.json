@@ -1,7 +1,7 @@
 {
   "name": "lottery-app",
   "version": "1.0.9",
-  "description": "ระบบจัดการหวย — Desktop edition (Electron + Next.js + SQLite)",
+  "description": "Love Number — ระบบจัดการหวย Desktop (Electron + Next.js + SQLite)",
   "author": "chinnakrit.mek@gmail.com",
   "license": "MIT",
   "main": "dist-electron/main.js",

@@ -52,7 +52,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       <div className="flex items-center gap-3 border-b px-6 py-5 bg-gradient-to-br from-primary/5 to-transparent">
         <span className="text-4xl animate-pop-in">🐱</span>
         <div>
-          <div className="font-bold text-base leading-tight text-gradient">LotteryApp</div>
+          <div className="font-bold text-base leading-tight text-gradient">Love Number</div>
           <div className="text-xs text-muted-foreground mt-0.5">ระบบจัดการหวย</div>
         </div>
       </div>

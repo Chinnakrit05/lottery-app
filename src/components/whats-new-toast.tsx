@@ -26,7 +26,7 @@ export function WhatsNewToast() {
           if (lastSeen) {
             // Upgrade from previous version
             toast.success(`อัพเดทเป็น v${current} แล้ว 🎉`, {
-              description: 'ขอบคุณที่ใช้งาน LotteryApp — ระบบจัดการหวยของคุณ',
+              description: 'ขอบคุณที่ใช้งาน Love Number — ระบบจัดการหวยของคุณ',
               duration: 6000,
               icon: <Sparkles className="h-4 w-4" />,
             });

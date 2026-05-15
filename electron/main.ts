@@ -22,7 +22,7 @@ async function createMainWindow() {
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    title: 'LotteryApp',
+    title: 'Love Number',
     backgroundColor: '#0b0b0c',
     show: false, // keep hidden until renderer is ready, splash is visible in the meantime
     autoHideMenuBar: true,

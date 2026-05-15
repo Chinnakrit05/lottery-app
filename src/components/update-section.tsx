@@ -99,7 +99,7 @@ export function UpdateSection() {
         />
 
         <div className="text-xs text-muted-foreground border-t pt-3 space-y-1">
-          <p>🐱 LotteryApp — ระบบจัดการหวยแบบ offline</p>
+          <p>🐱 Love Number — ระบบจัดการหวยแบบ offline</p>
           <p>🔄 ระบบจะเช็คอัพเดทอัตโนมัติทุก 30 นาที — หรือกดปุ่มข้างบนเพื่อเช็คเอง</p>
           <p>💾 ข้อมูลทั้งหมดเก็บไว้ในเครื่อง — ไม่มีการส่งข้อมูลออก</p>
         </div>

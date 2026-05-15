@@ -1,5 +1,5 @@
-appId: com.chinnakrit.lotteryapp
-productName: LotteryApp
+appId: com.chinnakrit.lotteryapp    # keep stable for auto-update continuity
+productName: Love Number
 copyright: Copyright © 2026 chinnakrit.mek@gmail.com
 
 # Auto-update target — GitHub Releases
@@ -32,7 +32,7 @@ win:
     - target: portable
       arch: [x64]
   icon: build/icon.ico
-  artifactName: ${productName}-${version}-${arch}.${ext}
+  artifactName: LoveNumber-${version}-${arch}.${ext}
 
 nsis:
   oneClick: false
@@ -40,10 +40,10 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: LotteryApp
+  shortcutName: Love Number
 
 portable:
-  artifactName: LotteryApp-${version}-portable.exe
+  artifactName: LoveNumber-${version}-portable.exe
 
 # macOS
 mac:
@@ -54,7 +54,7 @@ mac:
   category: public.app-category.finance
   hardenedRuntime: true
   gatekeeperAssess: false
-  artifactName: ${productName}-${version}-${arch}.${ext}
+  artifactName: LoveNumber-${version}-${arch}.${ext}
 
 dmg:
   contents:

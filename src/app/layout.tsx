@@ -12,8 +12,8 @@ const notoThai = Noto_Sans_Thai({
 });
 
 export const metadata: Metadata = {
-  title: 'LotteryApp',
-  description: 'ระบบจัดการหวย — Desktop Edition',
+  title: 'Love Number',
+  description: 'Love Number — ระบบจัดการหวย Desktop',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
