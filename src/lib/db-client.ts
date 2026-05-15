@@ -44,7 +44,9 @@ export const dbClient = {
   },
   backup: {
     export: () => getApi().backup.export(),
-    import: (mode: 'merge' | 'replace') => getApi().backup.import(mode),
+    preview: () => getApi().backup.preview(),
+    import: (mode: 'merge' | 'replace', filePath?: string) =>
+      getApi().backup.import(mode, filePath),
     stats: () => getApi().backup.stats(),
   },
   history: {

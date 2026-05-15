@@ -29,7 +29,9 @@ const api = {
   },
   backup: {
     export: () => ipcRenderer.invoke('backup:export'),
-    import: (mode: 'merge' | 'replace') => ipcRenderer.invoke('backup:import', mode),
+    preview: () => ipcRenderer.invoke('backup:preview'),
+    import: (mode: 'merge' | 'replace', filePath?: string) =>
+      ipcRenderer.invoke('backup:import', mode, filePath),
     stats: () => ipcRenderer.invoke('backup:stats'),
   },
   history: {

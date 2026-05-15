@@ -29,8 +29,35 @@ export interface ElectronApi {
     delete: (id: number) => Promise<boolean>;
   };
   backup: {
-    export: () => Promise<{ ok: boolean; path?: string; canceled?: boolean; error?: string }>;
-    import: (mode: 'merge' | 'replace') => Promise<{ ok: boolean; canceled?: boolean; error?: string }>;
+    export: () => Promise<{
+      ok: boolean;
+      path?: string;
+      canceled?: boolean;
+      error?: string;
+      stats?: { rounds: number; customers: number; tickets: number };
+    }>;
+    preview: () => Promise<{
+      ok: boolean;
+      canceled?: boolean;
+      error?: string;
+      filePath?: string;
+      meta?: {
+        format_version: number;
+        app_version: string | null;
+        product_name: string | null;
+        exported_at: string | null;
+        size_bytes: number;
+        rounds: number;
+        customers: number;
+        tickets: number;
+      };
+    }>;
+    import: (mode: 'merge' | 'replace', filePath?: string) => Promise<{
+      ok: boolean;
+      canceled?: boolean;
+      error?: string;
+      stats?: { rounds: number; customers: number; tickets: number; skipped: number };
+    }>;
     stats: () => Promise<{ rounds: number; customers: number; tickets: number }>;
   };
   history: {
