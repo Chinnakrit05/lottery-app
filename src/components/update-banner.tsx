@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Download, RefreshCw, CheckCircle2, Sparkles, X, Settings } from 'lucide-react';
+import { Download, RefreshCw, CheckCircle2, Sparkles, X } from 'lucide-react';
 import Link from 'next/link';
 import type { UpdateStatus } from '@/types/electron-api';
 
@@ -69,10 +69,10 @@ export function UpdateBanner() {
         <span className="text-muted-foreground hidden md:inline">
           — ไปหน้าตั้งค่าเพื่อดาวน์โหลด
         </span>
-        <Link href="/settings" className="ml-auto">
+        <Link href="/update" className="ml-auto">
           <Button size="sm" variant="outline" className="h-7">
-            <Settings className="h-3.5 w-3.5 mr-1.5" />
-            ไปหน้าตั้งค่า
+            <Sparkles className="h-3.5 w-3.5 mr-1.5" />
+            ไปดาวน์โหลด
           </Button>
         </Link>
         <Button

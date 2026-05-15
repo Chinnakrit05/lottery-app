@@ -4,20 +4,24 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  PencilLine, Search, BarChart3, Trophy, History, Users, Database, Settings,
+  PencilLine, Search, BarChart3, Trophy, History, Users, Database, Settings, Sparkles, Wifi,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from './theme-toggle';
+import type { UpdateStatus } from '@/types/electron-api';
 
 function AppVersionLabel() {
-  const [version, setVersion] = useState<string>('');
+  const [status, setStatus] = useState<UpdateStatus>({ state: 'idle' });
+  const pathname = usePathname();
+  const active = pathname === '/update' || pathname?.startsWith('/update/');
+
   useEffect(() => {
     if (typeof window === 'undefined' || !window.api?.update) return;
-    // Retry once after a short delay in case IPC handlers aren't registered yet
+    let unsub: (() => void) | undefined;
     const tryFetch = async (attempt = 0): Promise<void> => {
       try {
         const s = await window.api.update.getStatus();
-        if (s?.version) setVersion(s.version);
+        setStatus(s);
       } catch {
         if (attempt < 3) {
           setTimeout(() => tryFetch(attempt + 1), 500);
@@ -25,11 +29,42 @@ function AppVersionLabel() {
       }
     };
     tryFetch();
+    if (window.api?.update?.onStatus) {
+      unsub = window.api.update.onStatus((s) => setStatus(s));
+    }
+    return () => unsub?.();
   }, []);
+
+  const version = status.version;
+  const hasUpdate = status.state === 'available' || status.state === 'downloading' || status.state === 'ready';
+
   return (
-    <span className="text-xs text-muted-foreground">
-      Offline{version ? ` · v${version}` : ''}
-    </span>
+    <Link
+      href="/update"
+      className={cn(
+        'group flex items-center gap-2 rounded-lg px-2.5 py-1.5 transition-smooth',
+        'hover:bg-accent active:scale-[0.97]',
+        active && 'bg-accent',
+      )}
+      title="ดู / เช็คอัพเดทเวอร์ชั่น"
+    >
+      <span className="relative flex h-2 w-2">
+        {hasUpdate ? (
+          <>
+            <span className="absolute inset-0 inline-flex h-2 w-2 animate-ping rounded-full bg-amber-500 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+          </>
+        ) : (
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+        )}
+      </span>
+      <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+        Offline{version ? ` · v${version}` : ''}
+      </span>
+      {hasUpdate && (
+        <Sparkles className="h-3 w-3 text-amber-500 animate-pop-in" />
+      )}
+    </Link>
   );
 }
 

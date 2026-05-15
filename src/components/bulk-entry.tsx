@@ -91,9 +91,9 @@ export function BulkEntry({ roundId, onSaved }: Props) {
           />
           <div className="mt-2 grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-muted-foreground">
             <Tip>เลข 2 หลัก → 2 ตัวบน</Tip>
-            <Tip>"ล" ต่อท้าย → 2 ตัวล่าง</Tip>
-            <Tip>"ก" ต่อท้าย → กลับด้วย</Tip>
-            <Tip>"ต" (3 หลัก) → โต๊ด</Tip>
+            <Tip>{'"ล" ต่อท้าย → 2 ตัวล่าง'}</Tip>
+            <Tip>{'"ก" ต่อท้าย → กลับด้วย'}</Tip>
+            <Tip>{'"ต" (3 หลัก) → โต๊ด'}</Tip>
           </div>
         </div>
 
