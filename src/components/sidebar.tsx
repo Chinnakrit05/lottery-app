@@ -12,12 +12,19 @@ import { ThemeToggle } from './theme-toggle';
 function AppVersionLabel() {
   const [version, setVersion] = useState<string>('');
   useEffect(() => {
-    // Pull version from update status (which the main process knows)
-    if (typeof window !== 'undefined' && window.api?.update) {
-      window.api.update.getStatus().then((s) => {
-        if (s.version) setVersion(s.version);
-      });
-    }
+    if (typeof window === 'undefined' || !window.api?.update) return;
+    // Retry once after a short delay in case IPC handlers aren't registered yet
+    const tryFetch = async (attempt = 0): Promise<void> => {
+      try {
+        const s = await window.api.update.getStatus();
+        if (s?.version) setVersion(s.version);
+      } catch {
+        if (attempt < 3) {
+          setTimeout(() => tryFetch(attempt + 1), 500);
+        }
+      }
+    };
+    tryFetch();
   }, []);
   return (
     <span className="text-xs text-muted-foreground">

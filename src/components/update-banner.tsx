@@ -17,8 +17,12 @@ export function UpdateBanner() {
     if (!isElectronWithUpdate()) return;
     let unsub: (() => void) | undefined;
     (async () => {
-      const initial = await window.api.update.getStatus();
-      setStatus(initial);
+      try {
+        const initial = await window.api.update.getStatus();
+        setStatus(initial);
+      } catch {
+        // Handler not registered yet — fine, we still receive future events
+      }
       unsub = window.api.update.onStatus((s) => {
         setStatus(s);
         // Friendly toast on key transitions

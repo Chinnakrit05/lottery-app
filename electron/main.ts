@@ -4,7 +4,7 @@ import serve from 'electron-serve';
 import { initDatabase, closeDatabase } from './db/connection';
 import { registerIpcHandlers } from './handlers';
 import { createSplashWindow } from './splash';
-import { setupAutoUpdater } from './updater';
+import { setupAutoUpdater, registerUpdaterIpc } from './updater';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -74,6 +74,8 @@ app.whenReady().then(async () => {
   // 2) Do heavy work behind the splash
   initDatabase();
   registerIpcHandlers();
+  // Register updater IPC handlers ASAP so the renderer can call them on first mount
+  registerUpdaterIpc();
 
   // 3) Build main window — when ready, it will close the splash
   await createMainWindow();

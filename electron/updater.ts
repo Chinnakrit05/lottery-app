@@ -21,6 +21,30 @@ function broadcast(win: BrowserWindow, status: UpdateStatus) {
   }
 }
 
+/**
+ * Register IPC handlers ASAP — the renderer (sidebar) calls these on mount,
+ * before the auto-updater is fully set up.
+ * Safe to call before any BrowserWindow exists.
+ */
+export function registerUpdaterIpc() {
+  ipcMain.handle('update:getStatus', () => lastStatus);
+  ipcMain.handle('update:check', async () => {
+    if (isDev || process.platform !== 'win32') {
+      return { ok: false, error: 'Auto-update only supported in production Windows' };
+    }
+    try {
+      const result = await autoUpdater.checkForUpdates();
+      return { ok: true, version: result?.updateInfo?.version ?? null };
+    } catch (e: any) {
+      return { ok: false, error: e.message };
+    }
+  });
+  ipcMain.handle('update:restartAndInstall', () => {
+    if (isDev || process.platform !== 'win32') return;
+    autoUpdater.quitAndInstall(false, true);
+  });
+}
+
 export function setupAutoUpdater(mainWindow: BrowserWindow) {
   // Don't run in dev — there's no release feed to check against
   if (isDev) return;
@@ -64,19 +88,7 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
     broadcast(mainWindow, { state: 'error', message: err.message });
   });
 
-  // IPC: renderer can trigger manual check / restart
-  ipcMain.handle('update:getStatus', () => lastStatus);
-  ipcMain.handle('update:check', async () => {
-    try {
-      const result = await autoUpdater.checkForUpdates();
-      return { ok: true, version: result?.updateInfo?.version ?? null };
-    } catch (e: any) {
-      return { ok: false, error: e.message };
-    }
-  });
-  ipcMain.handle('update:restartAndInstall', () => {
-    autoUpdater.quitAndInstall(false, true);
-  });
+  // (IPC handlers already registered via registerUpdaterIpc())
 
   // Auto-check on startup (delay so the UI has time to mount)
   setTimeout(() => {
