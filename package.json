@@ -1,6 +1,6 @@
 {
   "name": "lottery-app",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Love Number — ระบบจัดการหวย Desktop (Electron + Next.js + SQLite)",
   "author": "chinnakrit.mek@gmail.com",
   "license": "MIT",
