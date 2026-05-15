@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { NoRound } from '@/components/no-round';
+import { UpdateSection } from '@/components/update-section';
 import { useCurrentRoundCtx } from '@/contexts/current-round';
 import { dbClient } from '@/lib/db-client';
 import { AlertTriangle } from 'lucide-react';
@@ -37,7 +38,14 @@ export default function SettingsPage() {
     });
   }, [currentRound]);
 
-  if (!currentRound) return <NoRound />;
+  if (!currentRound) {
+    return (
+      <div className="space-y-4 max-w-3xl">
+        <NoRound />
+        <UpdateSection />
+      </div>
+    );
+  }
 
   const save = async () => {
     if (!form.name.trim()) return toast.error('กรุณากรอกชื่องวด');
@@ -110,6 +118,8 @@ export default function SettingsPage() {
           </div>
         </CardContent>
       </Card>
+
+      <UpdateSection />
 
       <Card className="border-destructive/40">
         <CardHeader>
