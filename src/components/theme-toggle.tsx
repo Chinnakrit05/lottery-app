@@ -10,7 +10,7 @@ const THEMES = [
   { key: 'light',  label: 'Light',         desc: 'สว่างคูล',           icon: Sun,      colors: ['#ffffff', '#3a3aff', '#f1f5f9'] },
   { key: 'dark',   label: 'Dark',          desc: 'มืดคูล',             icon: Moon,     colors: ['#0f1424', '#6b7df5', '#1a2440'] },
   { key: 'warm',   label: 'Warm Cream',    desc: 'อบอุ่น นุ่มสบายตา',     icon: Sunrise,  colors: ['#f6f3ee', '#c08755', '#ebe3d8'] },
-  { key: 'sepia',  label: 'Sepia Paper',   desc: 'กระดาษเก่า อ่านสบาย',   icon: BookOpen, colors: ['#ebe1cc', '#9c6a3f', '#d9cab5'] },
+  { key: 'sepia',  label: 'Sepia Brown',   desc: 'น้ำตาลกาแฟ อ่านสบาย',   icon: BookOpen, colors: ['#cfbf9e', '#8e571c', '#c2b3a0'] },
   { key: 'system', label: 'System',        desc: 'ตามเครื่อง',          icon: Monitor,  colors: ['#cccccc', '#666666', '#999999'] },
 ] as const;
 
