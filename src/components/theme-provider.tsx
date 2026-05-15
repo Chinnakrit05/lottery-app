@@ -10,6 +10,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       defaultTheme="system"
       enableSystem
       storageKey="ui-theme"
+      themes={['light', 'dark', 'warm', 'sepia', 'system']}
       disableTransitionOnChange
     >
       {children}
